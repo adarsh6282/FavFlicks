@@ -12,7 +12,8 @@ const app=express()
 connectDB()
 
 let allowedOrigins=[
-    "http://localhost:5173"
+    "http://localhost:5173",
+    "https://favflicks-1.onrender.com"
 ]
 
 app.use(cors({
