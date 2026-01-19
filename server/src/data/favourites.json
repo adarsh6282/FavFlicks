@@ -1,0 +1,27 @@
+{
+  "696de5140c4ee0f7f02260d9": [
+    {
+      "Title": "Star Wars: Episode IV - A New Hope",
+      "Year": "1977",
+      "imdbID": "tt0076759",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BOGUwMDk0Y2MtNjBlNi00NmRiLTk2MWYtMGMyMDlhYmI4ZDBjXkEyXkFqcGc@._V1_SX300.jpg"
+    },
+    {
+      "Title": "Star Wars: Episode II - Attack of the Clones",
+      "Year": "2002",
+      "imdbID": "tt0121765",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BNTgxMjY2YzUtZmVmNC00YjAwLWJlODMtNDBhNzllNzIzMjgxXkEyXkFqcGc@._V1_SX300.jpg"
+    }
+  ],
+  "696dff204933903be9d22f86": [
+    {
+      "Title": "The Avengers",
+      "Year": "1961–1969",
+      "imdbID": "tt0054518",
+      "Type": "series",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMDhhYWIxMzYtNTY2Zi00MTZiLWI2ZDUtYjNiNTY5YzA5MWNkXkEyXkFqcGc@._V1_SX300.jpg"
+    }
+  ]
+}
