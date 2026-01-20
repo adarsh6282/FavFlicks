@@ -9,12 +9,14 @@ export class OmdbController implements IOmdbController {
   async searchMovies(req: Request, res: Response): Promise<void> {
     try {
       const query = req.query.q as string;
+      const page = Number(req.query.page) || 1
+      const limit = Number(req.query.limit) || 6
       const userId=req.user?.id
       if(!userId){
           res.status(httpStatus.UNAUTHORIZED).json({message:"User not found"})
           return
       }
-      const movies = await this._omdbService.searchMovies(query);
+      const movies = await this._omdbService.searchMovies(query,page,limit);
       console.log(movies);
       res.status(httpStatus.OK).json(movies);
     } catch (error) {

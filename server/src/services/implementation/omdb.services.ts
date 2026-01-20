@@ -9,15 +9,21 @@ const apiKey = process.env.OMDB_API_KEY as string;
 const filePath = path.join(__dirname, "../../data/favourites.json");
 
 export class OmdbService implements IOmdbService {
-  async searchMovies(query: string): Promise<IMovie | null> {
+  async searchMovies(query: string,page:number,limit:number): Promise<{movies:IMovie[],total:number}> {
     const response = await axios.get(baseUrl!, {
       params: {
         s: query,
+        page:page,
         apiKey: apiKey,
       },
     });
 
-    return response.data.Search || [];
+    const all = response.data.Search || [];
+
+    return {
+    movies: all.slice(0,limit),
+    total: Number(response.data.totalResults || 0),
+  };
   }
 
   async addToFavourite(

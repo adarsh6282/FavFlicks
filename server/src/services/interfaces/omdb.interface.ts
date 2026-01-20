@@ -1,7 +1,7 @@
 import { IMovie } from "../../types/movie";
 
 export interface IOmdbService {
-  searchMovies(query: string): Promise<IMovie | null>;
+  searchMovies(query: string,page:number,limit:number): Promise<{movies:IMovie[],total:number}>;
   addToFavourite(
     userId: string,
     movie: Partial<IMovie>,
