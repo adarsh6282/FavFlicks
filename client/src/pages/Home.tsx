@@ -16,6 +16,14 @@ const Home = () => {
   const [movies, setMovies] = useState([]);
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("avengers");
+  const [debounce, setDebounce] = useState("");
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setDebounce(searchQuery);
+    }, 300);
+    return () => clearTimeout(timeout);
+  }, [searchQuery]);
 
   const toggleWishlist = async (movie: any) => {
     try {
@@ -39,7 +47,7 @@ const Home = () => {
 
   const fetchMovies = async () => {
     try {
-      const res = await searchMovies(searchQuery || "avengers");
+      const res = await searchMovies(debounce || "avengers");
       setMovies(res.data);
     } catch (err) {
       console.error(err);
