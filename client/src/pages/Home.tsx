@@ -61,7 +61,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchMovies();
-  }, [searchQuery]);
+  }, [debounce]);
 
   useEffect(() => {
     const loadWishlist = async () => {
