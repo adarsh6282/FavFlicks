@@ -18,17 +18,24 @@ Fav-Flicks is a full-stack MERN application that allows users to search movies u
 # 🛠️ Tech Stack
 
 Frontend: React, TypeScript, Tailwind CSS
+
 Backend: Node.js, Express.js, TypeScript
+
 Database: MongoDB, Mongoose
+
 APIs: OMDB Api
+
 Auth: JWT
 
 # 🏗️ Architecture Overview
 The backend follows a Repository Pattern, organizing code into:
 
 Controllers – Handle requests and responses.
+
 Services – Contain business logic.
+
 Repositories – Interact with the database.
+
 This keeps the codebase clean, modular, and easy to maintain.
 
 
