@@ -1,8 +1,8 @@
 import { api } from "./apiService";
 
-export const searchMovies = async (query: string) => {
+export const searchMovies = async (query: string,page:number,limit:number) => {
   return await api.get("/movies/search", {
-    params: { q: query },
+    params: { q: query,page,limit },
   });
 };
 

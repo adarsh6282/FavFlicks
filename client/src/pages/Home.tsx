@@ -8,6 +8,8 @@ import {
   searchMovies,
 } from "../services/omdb.services";
 import { useNavigate } from "react-router-dom";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 import type { AxiosError } from "axios";
 import { errorToast, successToast } from "../components/Toast";
 
@@ -17,6 +19,9 @@ const Home = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("avengers");
   const [debounce, setDebounce] = useState("");
+  const [page, setPage] = useState(1);
+  const limit = 8;
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -45,10 +50,11 @@ const Home = () => {
     }
   };
 
-  const fetchMovies = async () => {
+  const fetchMovies = async (currentPage=page) => {
     try {
-      const res = await searchMovies(debounce || "avengers");
-      setMovies(res.data);
+      const res = await searchMovies(debounce || "avengers",currentPage,limit);
+      setTotal(res.data.total)
+      setMovies(res.data.movies);
     } catch (err) {
       console.error(err);
     }
@@ -60,7 +66,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    fetchMovies();
+    fetchMovies(page);
   }, [debounce]);
 
   useEffect(() => {
@@ -155,6 +161,21 @@ const Home = () => {
                 );
               })}
             </div>
+            <Stack spacing={2} alignItems="center" className="mt-10">
+              <Pagination
+                count={Math.ceil(total / limit)}
+                page={page}
+                onChange={(
+                  _event: React.ChangeEvent<unknown>,
+                  value: number,
+                ) => {
+                  setPage(value);
+                  fetchMovies(value);
+                }}
+                color="secondary"
+                shape="rounded"
+              />
+            </Stack>
           </section>
         </div>
       </div>
